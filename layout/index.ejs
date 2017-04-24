@@ -1,0 +1,48 @@
+<%- css('/css/index') %>
+
+<!--欢迎界面 start-->
+<div class="welcome-div">
+    <div class="mask"></div>
+    <div class="welcome-div-txt">
+        <div class="welcome-div-txt-middle">
+            <h1><%if(config.title){%><%=config.title%><%}else{%>blue<%}%></h1>
+            <p><%if(config.subtitle){%><%=config.subtitle%><%}else{%>blue<%}%></p>
+            <div class="line"></div>
+            <a title="进入博客" class="enter" href="javascript:;">进入博客</a>
+        </div>
+    </div>
+</div>
+<!-- 欢迎界面 end-->
+
+<div class="wrap">
+    <div class="main clearfix">
+        <div class="articles fltL">
+            <ul class="articles-list">
+            <%
+            //showPosts是一个数组包含多个对象
+            var showPosts = sortPosts(site.posts,config,page);
+            showPosts.forEach(function (post, i){
+                var urls = pickImgs(post),_photoUrl;
+                if(urls.length==0){
+                    _photoUrl=theme.defaultImg;
+                }else{
+                    _photoUrl = urls[Math.floor(urls.length*Math.random())];
+                }
+            %>
+            <li class="article-link clearfix <% if (page.prev==0&&i<3){ %><%= "latest" %> <% }%>" onclick="article_link('<%- url_for(post.path) %>')">
+                <div class="al-image"><img src="<%= _photoUrl %>"></div>
+                <div class="al-content">
+                    <h3><%= post.title %></h3>
+                    <p><%- truncate(strip_html(post.content),{length: 300, omission: '...'}) %></p>
+                    <%- partial('_partials/article-meta', {post:post}) %>
+                </div>
+            </li>
+            <% })%>
+        </ul>
+            <%- partial('_partials/pagination') %>
+        </div>
+        <%- partial('_partials/sidebar') %>
+    </div>
+
+</div>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!--seo-->
+        <%if(theme.keywords){%>
+            <meta name="keywords" content=<%= theme.keywords%>/>
+        <%}%>
+        <%if(theme.description){%>
+            <meta name="description" content=<%= theme.description%>/>
+        <%}%>
+        <%if(theme.author){%>
+            <meta name="author" content=<%= theme.author%>/>
+        <%}%>
+        <%if(theme.copyright){%>
+            <meta name="copyright" content=<%= theme.copyright%>/>
+        <%}%>
+
+        <title><% if (page.current>1){ %><%= "第 "+page.current+" 页 | " %> <% }%><% if (config.title){ %><%= config.title %> <% } else{%><%= "bluecat" %><% } %></title>
+
+        <link rel="shortcut icon" href="/favicon.ico">
+        <%- css('/css/common') %>
+        <%- css('/css/lib/font-awesome.min') %>
+        
+
+    </head>

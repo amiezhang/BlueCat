@@ -1,0 +1,11 @@
+<% if(site.categories.length){ %>
+<li class="category">
+    <h3><i class="fa fa-cubes"></i><%= __('categories') %></h3>
+    <%- list_categories({
+        show_count: theme.cate_show_count,
+        transform: function(name){
+            return '<i class="fa" aria-hidden="true">'+name+'</i>';
+        }
+    }) %>
+</li>
+<% } %>

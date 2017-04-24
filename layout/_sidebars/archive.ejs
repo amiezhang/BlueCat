@@ -1,0 +1,11 @@
+<% if(site.posts.length){%>
+<li class="archive">
+    <h3><i class="fa fa-file-text-o"></i><%= __('archive_a') %></h3>
+    <%- list_archives({
+        show_count: theme.arc_show_count,
+        transform: function (name) {
+            return '<i class="fa fa-paperclip" aria-hidden="true">'+name+'</i>';
+        }
+      }) %>
+</li>
+<%}%>

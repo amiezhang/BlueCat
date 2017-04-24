@@ -1,0 +1,8 @@
+<% if(theme.sidebarLists){%>
+<ul id="sidebarLists">
+    <% theme.sidebarLists.forEach(function(slist){ %>
+    <%- partial('_sidebars/' + slist) %>
+    <% }) %>
+    <li id="sidebar-close" class="fa fa-close"></li>
+</ul>
+<%}%>

@@ -1,0 +1,26 @@
+<div class="common-btns">
+    <a id="list-btn" href="javascript:;"><i class="fa fa-list" aria-hidden="true"></i></a>
+    <a id="gotoTop" href="javascript:;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+</div>
+<footer id="footer">
+<%
+    var now = date(new Date(), 'YYYY');
+    var copyrightInfo = now + '';
+%>
+
+    <% if(theme.themeLinks && theme.themeLinks.length){ %>
+    <p class="theme-links">
+        <% theme.themeLinks.forEach(function (item) { %>
+        <a href="<%- item.url %>" class="fa <%= item.icon %>" target="_blank" title="<%= item.title %>"></a>
+        <% }) %>
+    </p>
+    <% } %>
+    <p class="theme-time">
+        <span id="theme-time-day">bluecat已经运行了<%= date(new Date()-theme.since, 'D') %>天</span><br>
+        <span id="theme-time-now"></span><br>
+        <span><%if(config.subtitle){%><%= config.subtitle %><%}%></span>
+    </p>
+    <p class="theme-msg">由 Hexo 强力驱动<br><span>&copy;</span> <%= date(theme.since, 'YYYY') %> <% if(date(theme.since, 'YYYY')!=copyrightInfo){ %> - <%= copyrightInfo %> <%}%><%= theme.copyright %>.All Rights Reserved.</p>
+</footer>
+<div id="sidebarLists-bg"></div>
+<%- js('/js/index') %>

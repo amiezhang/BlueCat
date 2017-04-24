@@ -1,0 +1,90 @@
+
+# html lang
+language: zh-CN
+
+# 菜单
+menu:
+- pageName: 首页
+  url: /?opened=true
+- pageName: 作品
+  url: /demo
+- pageName: 关于我
+  url: /about
+
+
+#博文图片为空时的默认图片
+defaultImg: /defaultImg.jpg
+#我的头像
+iconic: /myicon.jpg
+
+#创建博客日期
+since: 2017-04-12
+
+#底部链接（icon查看http://fontawesome.io/icons/）
+themeLinks:
+- url: https://www.example1.com
+  title: freecodecamp
+  icon: fa-free-code-camp
+- url: https://github.com/amiezhang
+  title: 我的GitHub
+  icon: fa-github
+
+#SEO信息
+keywords: "张钧逸,张啊咩,博客,面试作品,技术笔记,Javascript,HTML5,CSS3"
+description: "个人博客，用于存放一些技术笔记和面试作品。"
+author: 张钧逸
+#底部copyright和about的名字
+copyright: 张钧逸
+
+#侧栏导航(侧栏导航:notice-公告,category-分类文章,archive-按时归档文章,tags-按标签文章,friends-友情链接)
+sidebarLists:
+- notice
+- category
+- archive
+- tags
+- friends
+
+#公告文字 支持html或纯文字
+noticeMsg: 欢迎大家来我的博客，这是我写的一个主题，对于hexo不是很熟悉，只能参考其他的主题，如果有什么好的建议可以在“关于我”留言给我。
+
+#是否显示博文数 arc_show_count归档博文数 cate_show_count分类博文数
+arc_show_count: true
+cate_show_count: true
+
+#标签配置
+tagcloud_config:
+ min_font: 0.16
+ max_font: 0.2
+ unit: rem
+ amount: 120
+ color: true
+ orderby: 'count'
+ start_color: '#55E'
+ end_color: '#66F'
+
+#友情链接
+friends:
+- linkName: MyGitHub
+  url: https://github.com/amiezhang
+- linkName: BlueCat
+  url: http://www.qq.com/
+- linkName: 博客园
+  url: http://www.cnblogs.com/amiezhang
+
+#demo目录 作品封面为banner.jpg
+demosj:
+ Netease:
+ - title: test
+   description: 这是一个测试这是一个测试，这是一个测试这是一个测试这是一个测试，这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试。这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试，这是一个测试这是一个测试这是一个测试。
+   url: /demo/gunlun
+ - title: test
+   description: 这是一个测试
+   url: /demo/gunlun
+ 趣味小页面:
+ - title: 滚轮小页面
+   description: 这个页面是纯css的滚轮效果。
+   url: /demo/gunlun
+ - title: test
+   description: 这是一个测试
+   url: /demo/gunlun
+

@@ -1,0 +1,37 @@
+<%- css('/css/index') %>
+<div class="wrap">
+        <%
+            if (is_category()) info = page.category;
+            else if (is_tag()) info = page.tag;
+            else if (is_archive()) info =  page.year+"年 "+page.month+"月";
+        %>
+        <div class="main clearfix">
+            <div class="articles fltL">
+                <ul class="articles-list">
+                <li class="archive-lifortitle"><h1 class="archive-title"><%= info %></h1></li>
+                <%
+
+                var showPosts = sortPosts(page.posts,config, page);
+                page.posts.forEach(function (post, i){
+                    var urls = pickImgs(post),_photoUrl;
+                    if(urls.length==0){
+                        _photoUrl=theme.defaultImg;
+                    }else{
+                        _photoUrl = urls[0];
+                    }
+                %>
+                <li class="article-link clearfix <% if (page.prev==0&&i<3){ %><%= "latest" %> <% }%>" onclick="article_link('<%- url_for(post.path) %>')">
+                    <div class="al-image"><img src="<%= _photoUrl %>"></div>
+                    <div class="al-content">
+                        <h3><%= post.title %></h3>
+                        <p><%- truncate(strip_html(post.content),{length: 300, omission: '...'}) %></p>
+                        <%- partial('_partials/article-meta', {post:post}) %>
+                    </div>
+                </li>
+                <% })%>
+            </ul>
+                <%- partial('_partials/pagination') %>
+            </div>
+            <%- partial('_partials/sidebar') %>
+        </div>
+    </div>

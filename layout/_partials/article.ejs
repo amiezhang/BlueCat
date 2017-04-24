@@ -1,0 +1,70 @@
+<%- css('/css/article') %>
+<div class="wrap">
+    <div class="main clearfix">
+        <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+      <div class="article-meta">
+        <%- partial('post/title', {class_name: 'article-title'}) %>
+        <p>
+          <% if(!is_category()&&post.categories.data[0]){ %>
+          <span>
+              <i class="fa fa-folder-open-o"></i>
+              <span><%= post.categories.data[0].name %></span>
+          </span>
+          <% } %>
+          <% if(post.tags && post.tags.length > 0 && post.tags.data[0] && post.tags.data[0].name){ %>
+          <span>
+              <i class="fa fa-tags"></i>
+              <span class="tags-meta">
+                  <%= post.tags.data[0].name %>
+              </span>
+          </span>
+          <% } %>
+          <span>
+              <i class="fa fa-clock-o"></i>
+              <span class="date-meta "><%- date(post.date, 'YYYY年MM月DD日') %></span>
+          </span>
+        </p>
+      </div>
+      <div class="article-inner">
+        <%- partial('post/gallery') %>
+        <% if (post.link || post.title){ %>
+          
+        <% } %>
+        <div class="article-entry" itemprop="articleBody">
+          <% if (post.excerpt && index){ %>
+            <%- post.excerpt %>
+            <% if (theme.excerpt_link){ %>
+              <p class="article-more-link">
+                <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+              </p>
+            <% } %>
+          <% } else { %>
+            <%- post.content %>
+          <% } %>
+        </div>
+        <footer class="article-footer">
+          <% if (post.comments && config.disqus_shortname){ %>
+            <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
+          <% } %>
+        </footer>
+</div>
+    <div class="article-nav clearfix">
+      <% if(page.prev){ %>
+      <a href="<%- url_for(page.prev.path) %>" class="article-nav-prev fa fa-arrow-circle-left"><%= page.prev.title %></a>
+      <% } %>
+      <% if(page.next){ %>
+      <a href="<%- url_for(page.next.path) %>" class="article-nav-next fa"><%= page.next.title %></a>
+      <% } %>
+    </div>
+  </article>
+        <%- partial('_partials/sidebar') %>
+        <%- partial('_extention/comment') %>
+    </div>
+</div>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>

@@ -1,0 +1,41 @@
+.wrap1{
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
+    perspective:800px;
+    -webkit-perspective:800px;
+    transform-style: preserve-3d;
+    perspective-origin:50% 50%;
+    z-index: 999;
+}
+.wrap1 .inner{
+    transform-style: preserve-3d;
+    position: relative;
+    margin:200px auto;
+    width: 300px;
+    height: 500px;
+    transform-origin: 50% 100px 0;
+    animation:mymove1 10s linear infinite;
+}
+.wrap1 .inner>div{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    opacity: .8;
+}
+.wrap1 .inner>div img{
+    width: 280px;
+    height: 180px;
+    display: block;
+    margin:10px;
+}
+.wrap1 .pic1{background: #00a060;transform:rotateX(0deg) translateZ(200px);} 
+.wrap1 .pic2{background: #ff00f0;transform:rotateX(60deg) translateZ(200px);}
+.wrap1 .pic3{background: red;transform:rotateX(120deg) translateZ(200px);}
+.wrap1 .pic4{background: #f07f7f;transform:rotateX(180deg) translateZ(200px);}
+.wrap1 .pic5{background: #0f8ef0;transform:rotateX(240deg) translateZ(200px);}
+.wrap1 .pic6{background: #f000f0;transform:rotateX(300deg) translateZ(200px);}
+@keyframes mymove1{
+    from{ transform: rotateX(0deg)}
+    to { transform: rotateX(-360deg)}
+}

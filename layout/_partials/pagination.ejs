@@ -1,0 +1,8 @@
+<nav id="pagination">
+  <% if (page.prev){ %>
+    <a href="<%- config.root %><%- page.prev_link %><%if(is_home()){%>?opened=true<%}%>" class="fltL prev"><%= __('prev') %></a>
+  <% } %>
+  <% if (page.next){ %>
+    <a href="<%- config.root %><%- page.next_link %><%if(is_home()){%>?opened=true<%}%>" class="fltR next"><%= __('next') %></a>
+  <% } %>
+</nav>

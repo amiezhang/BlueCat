@@ -1,0 +1,10 @@
+<li class="friends">
+    <h3><i class="fa fa-external-link-square"></i><%= __('friends') %></h3>
+    <% theme.friends.forEach(function (item,index,array) {%>
+        <a href="<%= item.url %>" target="_blank">
+            <i class="fa fa-link"></i>
+            <%= item.linkName %>
+            <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        </a>
+    <% })%>
+</li>

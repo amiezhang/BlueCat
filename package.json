@@ -1,0 +1,9 @@
+{
+  "name": "bluecat",
+  "version": "0.0.0",
+  "description": "bluecat hexo theme",
+  "private": true,
+  "dependencies": {
+    "hexo-renderer-less": "^0.2.0"
+  }
+}

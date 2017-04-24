@@ -1,0 +1,74 @@
+<%- css('/css/article') %>
+<div class="wrap">
+    <div class="main clearfix">
+<%if(page.title && page.title==='about'){%>
+     <article class="about">
+     	<div class="about-title">
+     		<h1>关于我</h1>
+     	</div>
+         <div class="about-head clearfix">
+        		<div class="about-icon fltL">
+            		<img src="<%= theme.iconic %>">
+        		</div>
+                <div class="about-msg fltL">
+                    <%= theme.copyright %>
+                    <br>
+                    <%= date(page.date,'M月D,YYYY') %>
+                </div>
+    		</div>
+         <div class="content">
+                <%- page.content%>
+            </div>
+      </article>
+<%}else if(page.title && page.title==='demo'&&theme.demosj){%>
+        <div class="demosj">
+        <%
+            var demosj = theme.demosj;
+            //console.log(demosj);
+            for(var key1 in demosj){
+            var demos = demosj[key1];
+        %>
+            <h1 id="<%= key1 %>x"><%= key1 %><i id="<%= key1 %>"></i></h1>
+            <ul class="demos clearfix">
+                <%
+                    for(var key2 in demos){
+                    var demo = demos[key2];
+                %>
+                    <li class="demo clearfix" onclick="demo_link('<%= demo.url+"/index.html" %>')">
+                        <div class="demo-image"><img src="<%= demo.url %>/banner.jpg"></div>
+                        <div class="demo-content">
+                            <h3><%= demo.title %></h3>
+                            <p><%= demo.description %></p>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+            <% } %>
+        </div>
+<%}else if(page.title && page.title==='search'){%>
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text" placeholder="请输入关键字...."/>
+            </div>
+            <ul id="search-result">
+
+            </ul>
+        </div>
+        <%- js('/js/search') %>
+        <script type="text/javascript">
+            var search = {};
+            var search_path = "<%- config.search.path %>";
+            if (!search_path) {
+                search_path = "search.xml";
+            }
+            search.path = "<%- config.root %>" + search_path;
+            search.func =  _ajax.init();
+            var $searchBtn = document.getElementById('search'),$searchInput = document.getElementById('search-input');
+            search.func(search.path);
+        </script>
+<%}%>
+        <%- partial('_partials/sidebar') %>
+        <%- partial('_extention/comment') %>
+    </div>
+</div>

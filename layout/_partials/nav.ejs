@@ -1,0 +1,17 @@
+<div class="nav">
+  <div class="animation-div">
+      <a href="<%- url_for("?opened=true")%>" id="logo">
+          <h1 class="title"><%= config.title%></h1>
+      </a>
+      <% if (config.subtitle){ %>
+      <h2 class="subtitle"><%= config.subtitle%></h2>
+      <% } %>        
+    <div class="nav-btns">
+      <% theme.menu.forEach(function (item) {%>
+          <a href="<%= item.url %>"><%= item.pageName %></a>
+      <%})%>
+      <a id="search" href="/search">搜索</a>
+    </div>
+  </div>
+</div>
+
